@@ -55,6 +55,7 @@ Partial Class Form1
         Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog3 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -302,10 +303,11 @@ Partial Class Form1
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(12, 407)
+        Me.ProgressBar1.Location = New System.Drawing.Point(16, 407)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(671, 23)
+        Me.ProgressBar1.Size = New System.Drawing.Size(667, 23)
         Me.ProgressBar1.TabIndex = 17
+        Me.ProgressBar1.Visible = False
         '
         'Label10
         '
@@ -335,11 +337,22 @@ Partial Class Form1
         'FolderBrowserDialog3
         '
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(126, 388)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(57, 13)
+        Me.Label11.TabIndex = 21
+        Me.Label11.Text = "Status text"
+        Me.Label11.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(698, 442)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.TextBox7)
         Me.Controls.Add(Me.Label10)
@@ -405,4 +418,5 @@ Partial Class Form1
     Friend WithEvents TextBox7 As TextBox
     Friend WithEvents Button5 As Button
     Friend WithEvents FolderBrowserDialog3 As FolderBrowserDialog
+    Friend WithEvents Label11 As Label
 End Class
