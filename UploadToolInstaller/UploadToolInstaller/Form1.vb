@@ -1,18 +1,22 @@
-﻿Public Class Form1
+﻿Imports System.IO
+Imports System.IO.Compression
+Public Class Form1
     'Basic settings:
     Dim defaultinstalldir As String = "C:\Program Files\Semrau Software Consulting\OSSU\"
     Dim settingslocation As String = "SOFTWARE\Semrau Software Consulting\OSSU"
     Dim mirror As String = "https://github.com/thegeekkid/OSSU/raw/master/SermonUploadTool/SermonUploadTool/bin/Debug/SermonUploadTool.exe"
-
+    Dim libavmirror As String = "https://github.com/thegeekkid/OSSU/raw/master/libav-11.3-win32.zip"
 
     'Don't touch - used in execution
     Dim status As String = ""
     Dim installing As Boolean = False
     Dim progress As Integer = 0
     Dim installdir As String = ""
+
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.TextBox7.Text = defaultinstalldir
-        Me.FolderBrowserDialog3.RootFolder = defaultinstalldir
+        'Me.FolderBrowserDialog3.RootFolder = defaultinstalldir
     End Sub
 
 
@@ -103,6 +107,7 @@
     End Function
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+
         lockform()
         Dim trd As System.Threading.Thread = New System.Threading.Thread(AddressOf doinstall)
         trd.IsBackground = True
@@ -159,6 +164,7 @@
         Me.Button5.Enabled = True
     End Sub
     Private Sub doinstall()
+        Dim libavloc As String = ""
         Try
             status = "Running pre-install checks..."
             progress = 1
@@ -169,6 +175,12 @@
                 Catch ex As Exception
                     MsgBox("Fatal error: Could not download program files: " & vbCrLf & ex.ToString)
                     fatalerror = True
+                End Try
+                Try
+                    My.Computer.Network.DownloadFile(libavmirror, installdir & "libav.zip")
+                    ZipFile.ExtractToDirectory(installdir & "libav.zip", installdir & "libav")
+                Catch ex As Exception
+                    MsgBox("Fatal error: Could not download libav." & vbCrLf & ex.ToString)
                 End Try
                 If fatalerror = False Then
                     Try
