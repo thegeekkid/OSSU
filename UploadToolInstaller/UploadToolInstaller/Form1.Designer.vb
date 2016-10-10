@@ -163,9 +163,6 @@ Partial Class Form1
         Me.Button1.Text = "Browse"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'FolderBrowserDialog1
-        '
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -190,9 +187,6 @@ Partial Class Form1
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(255, 20)
         Me.TextBox2.TabIndex = 11
-        '
-        'FolderBrowserDialog2
-        '
         '
         'Panel1
         '
@@ -333,9 +327,6 @@ Partial Class Form1
         Me.Button5.TabIndex = 20
         Me.Button5.Text = "Browse"
         Me.Button5.UseVisualStyleBackColor = True
-        '
-        'FolderBrowserDialog3
-        '
         '
         'Label11
         '
