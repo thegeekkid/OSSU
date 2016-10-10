@@ -223,6 +223,7 @@ Partial Class Form1
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(319, 20)
         Me.TextBox5.TabIndex = 6
+        Me.TextBox5.UseSystemPasswordChar = True
         '
         'Label8
         '

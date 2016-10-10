@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("UploadToolInstaller")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("Great Lakes Dredge and Dock")>
+<Assembly: AssemblyCompany("Semrau Software Consulting")>
 <Assembly: AssemblyProduct("UploadToolInstaller")>
-<Assembly: AssemblyCopyright("Copyright © Great Lakes Dredge and Dock 2016")>
+<Assembly: AssemblyCopyright("Copyright © Semrau Software Consulting 2016")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
