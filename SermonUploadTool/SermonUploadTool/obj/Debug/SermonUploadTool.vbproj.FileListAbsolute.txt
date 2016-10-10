@@ -1,0 +1,14 @@
+C:\misc\Repos\WestSubSermonUploader\SermonUploadTool\SermonUploadTool\bin\Debug\SermonUploadTool.exe
+C:\misc\Repos\WestSubSermonUploader\SermonUploadTool\SermonUploadTool\bin\Debug\SermonUploadTool.pdb
+C:\misc\Repos\WestSubSermonUploader\SermonUploadTool\SermonUploadTool\bin\Debug\SermonUploadTool.xml
+C:\misc\Repos\WestSubSermonUploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.vbprojResolveAssemblyReference.cache
+C:\misc\Repos\WestSubSermonUploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.Form1.resources
+C:\misc\Repos\WestSubSermonUploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.Resources.resources
+C:\misc\Repos\WestSubSermonUploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.selection.resources
+C:\misc\Repos\WestSubSermonUploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.vbproj.GenerateResource.Cache
+C:\misc\Repos\WestSubSermonUploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.exe
+C:\misc\Repos\WestSubSermonUploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.xml
+C:\misc\Repos\WestSubSermonUploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.pdb
+C:\misc\Repos\Open Source Sermon Uploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.exe
+C:\misc\Repos\Open Source Sermon Uploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.xml
+C:\misc\Repos\Open Source Sermon Uploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.pdb
