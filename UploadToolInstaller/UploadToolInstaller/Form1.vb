@@ -1,5 +1,5 @@
-﻿Imports System.IO
-Imports System.IO.Compression
+﻿Imports System.IO.Compression
+Imports IWshRuntimeLibrary
 Public Class Form1
     'Basic settings:
     Dim defaultinstalldir As String = "C:\Program Files\Semrau Software Consulting\OSSU\"
@@ -14,11 +14,16 @@ Public Class Form1
     Dim installing As Boolean = False
     Dim progress As Integer = 0
     Dim installdir As String = ""
+    Dim failedon As String = ""
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.TextBox7.Text = defaultinstalldir
         'Me.FolderBrowserDialog3.RootFolder = defaultinstalldir
+    End Sub
+    Private Sub Form1_Close(sender As Object, e As EventArgs) Handles MyBase.FormClosing
+        My.Forms.License.Close()
+        Me.Close()
     End Sub
 
 
@@ -62,7 +67,7 @@ Public Class Form1
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.FolderBrowserDialog2.ShowDialog()
         If Me.FolderBrowserDialog2.ShowDialog.OK Then
-            Me.TextBox2.Text = Me.FolderBrowserDialog1.SelectedPath
+            Me.TextBox2.Text = Me.FolderBrowserDialog2.SelectedPath
         End If
     End Sub
 
@@ -170,6 +175,8 @@ Public Class Form1
             status = "Running pre-install checks..."
             progress = 1
             If installchecks() = True Then
+                status = "Pre-install checks passed.  Downloading core program..."
+                progress = 5
                 Dim fatalerror As Boolean = False
                 Try
                     My.Computer.Network.DownloadFile(mirror, installdir & "SermonUploadTool.exe")
@@ -178,6 +185,8 @@ Public Class Form1
                     fatalerror = True
                 End Try
                 If fatalerror = False Then
+                    status = "Core program downloaded.  Downloading Libav from default mirror..."
+                    progress = 25
                     Try
                         My.Computer.Network.DownloadFile(libavmirror, installdir & "libav.zip")
                         ZipFile.ExtractToDirectory(installdir & "libav.zip", installdir & "libav")
@@ -187,6 +196,8 @@ Public Class Form1
                     End Try
                 End If
                 If fatalerror = False Then
+                    status = "Libav downloaded.  Extracting Libav..."
+                    progress = 50
                     Try
                         If My.Computer.FileSystem.FileExists(installdir & "libav.zip") Then
                             My.Computer.FileSystem.DeleteFile(installdir & "libav.zip")
@@ -195,8 +206,9 @@ Public Class Form1
                         MsgBox("Non-critical error: Could not delete the zipped libav library.  This shouldn't hurt anything, but if you want to keep things clean, go delete " & installdir & "libav.zip manually.")
                     End Try
                 End If
-
                 If fatalerror = False Then
+                    status = "Libav extracted.  Creating registry keys..."
+                    progress = 75
                     Try
                         Dim setloc As Microsoft.Win32.RegistryKey = My.Computer.Registry.LocalMachine.OpenSubKey(settingslocation)
                         If setloc Is Nothing Then
@@ -207,28 +219,52 @@ Public Class Form1
                     End Try
                 End If
                 If fatalerror = False Then
+                    status = "Registry keys created.  Setting registry values..."
+                    progress = 80
                     Try
                         setsetting("move_file", Me.CheckBox2.Checked)
+                        progress = 82
                         setsetting("upload_file", Me.CheckBox3.Checked)
+                        progress = 84
                         setsetting("update_playlist", Me.CheckBox4.Checked)
+                        progress = 86
                         setsetting("delete_converted_files", Me.CheckBox5.Checked)
+                        progress = 88
                         setsetting("staging_location", Me.TextBox1.Text)
+                        progress = 90
                         setsetting("libav_path", installdir & libavsubpath)
+                        progress = 92
                         If Me.CheckBox2.Checked Then
                             setsetting("move_location", Me.TextBox2.Text)
                         End If
+                        progress = 94
                         If Me.CheckBox3.Checked Then
                             setsetting("ftp_host", Me.TextBox3.Text)
+                            progress = 96
                             setsetting("ftp_user", Me.TextBox4.Text)
+                            progress = 98
                             setsetting("ftp_pw", Me.TextBox5.Text)
                         End If
+                        progress = 99
                         If Me.CheckBox4.Checked Then
                             setsetting("url", Me.TextBox6.Text)
                         End If
                     Catch ex As Exception
-
+                        MsgBox("Fatal error: Could not set some of the registry values: " & vbCrLf & ex.ToString)
                     End Try
                 End If
+                If fatalerror = False Then
+                    status = "Creating shortcut on desktop."
+                    CreateShortCut(installdir & "SermonUploadTool.exe", installdir, "Sermon Upload Tool")
+                    status = "Installation finished!"
+                    progress = 100
+                    installing = False
+                End If
+            Else
+                status = "Pre-checks failed..."
+                progress = 0
+                MsgBox("Error: Pre-installation checks failed.  The check that failed was: " & failedon & ".")
+                installing = False
             End If
         Catch ex As Exception
             MsgBox("Fatal installation error: " & vbCrLf & ex.ToString)
@@ -239,6 +275,37 @@ Public Class Form1
             My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\" & settingslocation, settingname, value)
         Catch ex As Exception
             MsgBox("Critical error reading settings values.  Please re-run setup. " & vbCrLf & ex.ToString)
+        End Try
+    End Sub
+    Private Sub CreateShortCut(ByVal FileName As String, ByVal path As String, ByVal Title As String)
+        Try
+            Dim wsh As Object = CreateObject("WScript.Shell")
+
+            wsh = CreateObject("WScript.Shell")
+
+            Dim MyShortcut, DesktopPath
+
+            ' Read desktop path using WshSpecialFolders object
+
+            DesktopPath = wsh.SpecialFolders("Desktop")
+
+            ' Create a shortcut object on the desktop
+
+            MyShortcut = wsh.CreateShortcut(DesktopPath & "\" & Title & ".lnk")
+
+            ' Set shortcut object properties and save it
+
+            MyShortcut.TargetPath = wsh.ExpandEnvironmentStrings(FileName)
+
+            MyShortcut.WorkingDirectory = wsh.ExpandEnvironmentStrings(path)
+
+            MyShortcut.WindowStyle = 4
+
+            'Save the shortcut
+
+            MyShortcut.Save()
+        Catch ex As System.Exception
+            MsgBox("Non critical error: Could not create the shortcut.  Please manually create any shortcuts that you want.")
         End Try
     End Sub
     Private Function installchecks() As Boolean
@@ -256,6 +323,7 @@ Public Class Form1
                     End If
                 Catch ex As Exception
                     MsgBox("Error clearing installation directory: " & vbCrLf & ex.ToString)
+                    failedon = "Making installation directory"
                     good2go = False
                 End Try
             Else
@@ -267,13 +335,15 @@ Public Class Form1
                 If Me.TextBox1.Text = Me.TextBox2.Text Then
                     good2go = False
                     MsgBox("Error - the source folder and destination folder can not be the same if you are moving files.")
+                    failedon = "Verifying source and target directories"
                 End If
             End If
         End If
         If good2go = True Then
             If Me.CheckBox3.Checked Then
-                If testftp() = True Then
+                If testftp() = False Then
                     good2go = False
+                    failedon = "Verifying FTP connection"
                 End If
             End If
         End If
@@ -281,6 +351,7 @@ Public Class Form1
             If Me.CheckBox4.Checked Then
                 If testwebsite(Me.TextBox6.Text) = False Then
                     good2go = False
+                    failedon = "Verifying access to website"
                 End If
             End If
         End If
