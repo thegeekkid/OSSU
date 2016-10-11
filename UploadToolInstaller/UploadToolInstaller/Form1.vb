@@ -20,6 +20,7 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.TextBox7.Text = defaultinstalldir
         'Me.FolderBrowserDialog3.RootFolder = defaultinstalldir
+        Me.FolderBrowserDialog3.SelectedPath = defaultinstalldir
     End Sub
     Private Sub Form1_Close(sender As Object, e As EventArgs) Handles MyBase.FormClosing
         My.Forms.License.Close()
@@ -133,6 +134,18 @@ Public Class Form1
             End If
             Sleep(2000)
         Loop
+        Me.Label11.Text = status
+        Me.ProgressBar1.Value = 100
+        If failedon = "" Then
+            MsgBox("Installation complete!")
+            My.Forms.License.Close()
+            Me.Close()
+        Else
+            failedon = ""
+            unlockform()
+            Me.ProgressBar1.Visible = False
+            Me.Label11.Visible = False
+        End If
     End Sub
     Private Sub lockform()
         Me.CheckBox2.Enabled = False
@@ -329,6 +342,19 @@ Public Class Form1
             Else
                 good2go = False
             End If
+        Else
+            Try
+                My.Computer.FileSystem.CreateDirectory(Me.TextBox7.Text)
+                If Me.TextBox7.Text.EndsWith("\") Then
+                    installdir = Me.TextBox7.Text
+                Else
+                    installdir = Me.TextBox7.Text & "\"
+                End If
+            Catch ex As Exception
+                MsgBox("Error clearing installation directory: " & vbCrLf & ex.ToString)
+                failedon = "Making installation directory"
+                good2go = False
+            End Try
         End If
         If good2go = True Then
             If Me.CheckBox2.Checked Then
