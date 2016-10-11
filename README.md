@@ -55,6 +55,7 @@ We welcome contributions.  Please submit a pull request if you would like to con
 #### Example use case:
 
 Here is how we personally use OSSU at my church:
+
 1.  Recording engineer records the sermon with Audacity and exports the audio as .wav to a staging folder using the naming convention mentioned above.
 2.  Recording engineer opens OSSU; which sees only one file, loads it and parses out the date, speaker, and title from the naming convention.
 3.  Recording engineer confirms that the data was parsed correctly and makes changes if necessary, then presses "confirm".
