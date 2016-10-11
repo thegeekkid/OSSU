@@ -4,8 +4,10 @@ Public Class Form1
     'Basic settings:
     Dim defaultinstalldir As String = "C:\Program Files\Semrau Software Consulting\OSSU\"
     Dim settingslocation As String = "SOFTWARE\Semrau Software Consulting\OSSU"
-    Dim mirror As String = "https://github.com/thegeekkid/OSSU/raw/master/SermonUploadTool/SermonUploadTool/bin/Debug/SermonUploadTool.exe"
-    Dim libavmirror As String = "https://github.com/thegeekkid/OSSU/raw/master/libav-11.3-win32.zip"
+    Dim mirror As String = "https://downloads.semrauconsulting.com/ossu/SermonUploadTool.exe"
+    'Will probably have to update both of the next vars when we update libav.
+    Dim libavmirror As String = "https://downloads.semrauconsulting.com/ossu/libav-11.3-win32.zip"
+    Dim libavsubpath As String = "libav-11.3-win32\win32\usr\bin\"
 
     'Don't touch - used in execution
     Dim status As String = ""
@@ -164,7 +166,6 @@ Public Class Form1
         Me.Button5.Enabled = True
     End Sub
     Private Sub doinstall()
-        Dim libavloc As String = ""
         Try
             status = "Running pre-install checks..."
             progress = 1
@@ -176,12 +177,25 @@ Public Class Form1
                     MsgBox("Fatal error: Could not download program files: " & vbCrLf & ex.ToString)
                     fatalerror = True
                 End Try
-                Try
-                    My.Computer.Network.DownloadFile(libavmirror, installdir & "libav.zip")
-                    ZipFile.ExtractToDirectory(installdir & "libav.zip", installdir & "libav")
-                Catch ex As Exception
-                    MsgBox("Fatal error: Could not download libav." & vbCrLf & ex.ToString)
-                End Try
+                If fatalerror = False Then
+                    Try
+                        My.Computer.Network.DownloadFile(libavmirror, installdir & "libav.zip")
+                        ZipFile.ExtractToDirectory(installdir & "libav.zip", installdir & "libav")
+                    Catch ex As Exception
+                        MsgBox("Fatal error: Could not download libav." & vbCrLf & ex.ToString)
+                        fatalerror = True
+                    End Try
+                End If
+                If fatalerror = False Then
+                    Try
+                        If My.Computer.FileSystem.FileExists(installdir & "libav.zip") Then
+                            My.Computer.FileSystem.DeleteFile(installdir & "libav.zip")
+                        End If
+                    Catch ex As Exception
+                        MsgBox("Non-critical error: Could not delete the zipped libav library.  This shouldn't hurt anything, but if you want to keep things clean, go delete " & installdir & "libav.zip manually.")
+                    End Try
+                End If
+
                 If fatalerror = False Then
                     Try
                         Dim setloc As Microsoft.Win32.RegistryKey = My.Computer.Registry.LocalMachine.OpenSubKey(settingslocation)
@@ -199,6 +213,7 @@ Public Class Form1
                         setsetting("update_playlist", Me.CheckBox4.Checked)
                         setsetting("delete_converted_files", Me.CheckBox5.Checked)
                         setsetting("staging_location", Me.TextBox1.Text)
+                        setsetting("libav_path", installdir & libavsubpath)
                         If Me.CheckBox2.Checked Then
                             setsetting("move_location", Me.TextBox2.Text)
                         End If
@@ -277,7 +292,7 @@ Public Class Form1
                 My.Computer.FileSystem.CreateDirectory(Me.TextBox2.Text)
             End If
         Catch ex As Exception
-            MsgBox("Non critical error: We couldn't create the directories that you specified for either the source or destination of the files.  Make sure you have created both of these before using the product.")
+            MsgBox("Non critical error: We couldn't create the directories that you specified for either the source or destination of the files.  This is normal if the folder(s) already exist.  Just make sure that both of these folders have been created before using the product.")
         End Try
         Return good2go
     End Function
