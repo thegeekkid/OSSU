@@ -20,27 +20,27 @@ Keep in mind that using spaces in file names is a very bad idea - especially whe
 #### Manual installation:
 
 If you would like to install OSSU manually, please follow the steps below:
-1. Download the OSSU core executable from GitHub.
-2. Save this to a path of your choosing.
-3. Download Libav from the mirror of your choice.
-4. Extract Libav and make note of where the avconv.exe file is - you will need this later.
-5. Make note of the registry location specified in the variable at the top of OSSU's From1.vb (settingslocation).  By default, it is "HKEY_LOCAL_MACHINE\SOFTWARE\Semrau Software Consulting\OSSU".
-6. Create this location in your registry if it doesn't already exist.
-7. Create the following values:
-··1. move_file: True or False (Do you want to enable the file moving feature?)
+1.  Download the OSSU core executable from GitHub.
+2.  Save this to a path of your choosing.
+3.  Download Libav from the mirror of your choice.
+4.  Extract Libav and make note of where the avconv.exe file is - you will need this later.
+5.  Make note of the registry location specified in the variable at the top of OSSU's From1.vb (settingslocation).  By default, it is "HKEY_LOCAL_MACHINE\SOFTWARE\Semrau Software Consulting\OSSU".
+6.  Create this location in your registry if it doesn't already exist.
+7.  Create the following values:
+··1.  move_file: True or False (Do you want to enable the file moving feature?)
 ····* If True: Create move_location with the path that you want OSSU to move the source files to after it is finished.
-··2. upload_file: True or False (Do you want to upload the mp3 and ogg files via FTP?)
+··2.  upload_file: True or False (Do you want to upload the mp3 and ogg files via FTP?)
 ····* If True: Create the following values with the FTP settings:
 ······* ftp_host (The host of your FTP site including "ftp://")
 ······* ftp_user (The user account to use when uploading)
 ······* ftp_pw (The password to use when uploading)
 ····* Note about FTP uploading: The program will upload the mp3 and ogg files to the sub directory "files"; however, if you are using the included sermon display site and the playlist included with that; it will upload the playlist.txt to the root of the ftp host that you specify.
-··3. update_playlist: True or False (Do you want to update the playlist.txt file?  Only choose true if you plan to use the included display site or will be following the playlist format that we created for the display site)
+··3.  update_playlist: True or False (Do you want to update the playlist.txt file?  Only choose true if you plan to use the included display site or will be following the playlist format that we created for the display site)
 ····* If True: Create "url" with the value of your display site including "http(s)://" and a "/" at the end of the url.
-··4. delete_converted_files: True or False (Do you want to delete the files in the source directory when OSSU is done with them?)
-··5. staging_location: The path on your computer that you put the source files in.  Include a "\" at the end.
-··6. avlib_path: The path contain's libav's "avconv.exe" file.  Do not include "avconv.exe" at the end; just the directory that contains it.  *Do* include "\" at the end of the path.
-··7. If desired, create a shortcut on the desktop to SermonUploadTool.exe.
+··4.  delete_converted_files: True or False (Do you want to delete the files in the source directory when OSSU is done with them?)
+··5.  staging_location: The path on your computer that you put the source files in.  Include a "\" at the end.
+··6.  avlib_path: The path contain's libav's "avconv.exe" file.  Do not include "avconv.exe" at the end; just the directory that contains it.  *Do* include "\" at the end of the path.
+··7.  If desired, create a shortcut on the desktop to SermonUploadTool.exe.
 
 ### Security considerations:
 
@@ -54,17 +54,17 @@ We welcome contributions.  Please submit a pull request if you would like to con
 #### Example use case:
 
 Here is how we personally use OSSU at my church:
-1. Recording engineer records the sermon with Audacity and exports the audio as .wav to a staging folder using the naming convention mentioned above.
-2. Recording engineer opens OSSU; which sees only one file, loads it and parses out the date, speaker, and title from the naming convention.
-3. Recording engineer confirms that the data was parsed correctly and makes changes if necessary, then presses "confirm".
-4. OSSU converts the .wav file to .mp3 and .ogg.
-5. OSSU downloads the current playlist.txt file from the target display site.
-6. OSSU updates the playlist.txt file so that it contains the newest files.
-7. OSSU uploads the .mp3, .ogg, then playlist.txt files.
-8. OSSU moves the .wav file to our archival folder on a network share.
-9. OSSU deletes all of the files from the staging folder.
+1.  Recording engineer records the sermon with Audacity and exports the audio as .wav to a staging folder using the naming convention mentioned above.
+2.  Recording engineer opens OSSU; which sees only one file, loads it and parses out the date, speaker, and title from the naming convention.
+3.  Recording engineer confirms that the data was parsed correctly and makes changes if necessary, then presses "confirm".
+4.  OSSU converts the .wav file to .mp3 and .ogg.
+5.  OSSU downloads the current playlist.txt file from the target display site.
+6.  OSSU updates the playlist.txt file so that it contains the newest files.
+7.  OSSU uploads the .mp3, .ogg, then playlist.txt files.
+8.  OSSU moves the .wav file to our archival folder on a network share.
+9.  OSSU deletes all of the files from the staging folder.
 
 ## Disclaimers:
 
-1. Read the license of OSSU, and Libav.  We did not create Libav.  We do not compile Libav into our program; although we do download and install it for your convience if you use our automated installer.  Because we do not compile Libav into our program, we are seen as "a work that uses the library" and are not covered under the Lesser GPL or GPLv2... we use the MIT license.
-2. Don't be stupid.  If you don't have the proper copyrights to upload parts of your service (such as the music), don't upload them.  Consult whatever service you use for copyrights (such as CCLI) before uploading any parts of your service.  We are not copyright lawyers.  We will not be held liable for any copyright mistakes that you might make while using this tool.
+1.  Read the license of OSSU, and Libav.  We did not create Libav.  We do not compile Libav into our program; although we do download and install it for your convience if you use our automated installer.  Because we do not compile Libav into our program, we are seen as "a work that uses the library" and are not covered under the Lesser GPL or GPLv2... we use the MIT license.
+2.  Don't be stupid.  If you don't have the proper copyrights to upload parts of your service (such as the music), don't upload them.  Consult whatever service you use for copyrights (such as CCLI) before uploading any parts of your service.  We are not copyright lawyers.  We will not be held liable for any copyright mistakes that you might make while using this tool.
