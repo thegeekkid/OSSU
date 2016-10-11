@@ -15,6 +15,7 @@ It offers the following features - all except the conversion features are option
 OSSU is configured to use the following naming convention:
 MM-DD-YYYY-Speaker_Name-Sermon_Title.wav (or .mp3)
 If that naming convention is followed, OSSU will automatically parse that data and use it where necessary.  Otherwise, the person uploading the file can manually enter the data in the confirmation form.
+Keep in mind that using spaces in file names is a very bad idea - especially when being uploaded to the web.  This is why we *strongly* recommend using underscores instead of spaces.
 
 #### Manual installation:
 
