@@ -2,7 +2,7 @@
 ### Overview:
 OSSU is a tool designed to automate the process of uploading a recording of a sermon to a church's website at the end of the service.
 It offers the following features - all except the conversion features are optional and can be configured automatically during the installation with the installation tool, or manually by editing the registry.
-* Conversion of source file from WAV to MP3 and OGG or conversion from MP3 to OGG if the source is MP3.  (Conversion provided by Libav which will be installed automatically by the pre-compiled installer, or can be installed manually from [https://libav.org/download/](https://libav.org/download/).
+* Conversion of source file from WAV to MP3 and OGG or conversion from MP3 to OGG if the source is MP3.  (Conversion provided by Libav which will be installed automatically by the pre-compiled installer, or can be installed manually from [https://libav.org/download/](https://libav.org/download/)).
 * Archival of source file by moving it to designated directory.
 * Automated upload of file to FTP site.
 * Included ASP.NET display site that will parse through a playlist.txt file and write HTML5 markup that is easy to integrate with CSS via classes.  OSSU can download this playlist.txt file and update it with the new audio files automatically.
