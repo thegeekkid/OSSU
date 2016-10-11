@@ -20,6 +20,7 @@ Keep in mind that using spaces in file names is a very bad idea - especially whe
 #### Manual installation:
 
 If you would like to install OSSU manually, please follow the steps below:
+
 1.  Download the OSSU core executable from GitHub.
 2.  Save this to a path of your choosing.
 3.  Download Libav from the mirror of your choice.
