@@ -27,25 +27,25 @@ If you would like to install OSSU manually, please follow the steps below:
 5.  Make note of the registry location specified in the variable at the top of OSSU's From1.vb (settingslocation).  By default, it is "HKEY_LOCAL_MACHINE\SOFTWARE\Semrau Software Consulting\OSSU".
 6.  Create this location in your registry if it doesn't already exist.
 7.  Create the following values:
-··1.  move_file: True or False (Do you want to enable the file moving feature?)
-····* If True: Create move_location with the path that you want OSSU to move the source files to after it is finished.
-··2.  upload_file: True or False (Do you want to upload the mp3 and ogg files via FTP?)
-····* If True: Create the following values with the FTP settings:
-······* ftp_host (The host of your FTP site including "ftp://")
-······* ftp_user (The user account to use when uploading)
-······* ftp_pw (The password to use when uploading)
-····* Note about FTP uploading: The program will upload the mp3 and ogg files to the sub directory "files"; however, if you are using the included sermon display site and the playlist included with that; it will upload the playlist.txt to the root of the ftp host that you specify.
-··3.  update_playlist: True or False (Do you want to update the playlist.txt file?  Only choose true if you plan to use the included display site or will be following the playlist format that we created for the display site)
-····* If True: Create "url" with the value of your display site including "http(s)://" and a "/" at the end of the url.
-··4.  delete_converted_files: True or False (Do you want to delete the files in the source directory when OSSU is done with them?)
-··5.  staging_location: The path on your computer that you put the source files in.  Include a "\" at the end.
-··6.  avlib_path: The path contain's libav's "avconv.exe" file.  Do not include "avconv.exe" at the end; just the directory that contains it.  *Do* include "\" at the end of the path.
-··7.  If desired, create a shortcut on the desktop to SermonUploadTool.exe.
+  1.  move_file: True or False (Do you want to enable the file moving feature?)
+    * If True: Create move_location with the path that you want OSSU to move the source files to after it is finished.
+  2.  upload_file: True or False (Do you want to upload the mp3 and ogg files via FTP?)
+    * If True: Create the following values with the FTP settings:
+      * ftp_host (The host of your FTP site including "ftp://")
+      * ftp_user (The user account to use when uploading)
+      * ftp_pw (The password to use when uploading)
+    * Note about FTP uploading: The program will upload the mp3 and ogg files to the sub directory "files"; however, if you are using the included sermon display site and the playlist included with that; it will upload the playlist.txt to the root of the ftp host that you specify.
+  3.  update_playlist: True or False (Do you want to update the playlist.txt file?  Only choose true if you plan to use the included display site or will be following the playlist format that we created for the display site)
+    * If True: Create "url" with the value of your display site including "http(s)://" and a "/" at the end of the url.
+  4.  delete_converted_files: True or False (Do you want to delete the files in the source directory when OSSU is done with them?)
+  5.  staging_location: The path on your computer that you put the source files in.  Include a "\" at the end.
+  6.  avlib_path: The path contain's libav's "avconv.exe" file.  Do not include "avconv.exe" at the end; just the directory that contains it.  *Do* include "\" at the end of the path.
+  7.  If desired, create a shortcut on the desktop to SermonUploadTool.exe.
 
 ### Security considerations:
 
 * Currently OSSU stores your FTP credentials in plain text in the registry.  Do not install OSSU with FTP uploading enabled on a public computer.
-··* We will be releasing a version of OSSU that encrypts the credentials eventually; however, the fact that credentials are stored in any form (even encrypted) is technically a security issue.  While encrypted credentials will help, we will continue to recommend that OSSU not be installed on a public computer if it has FTP uploading enabled.
+  * We will be releasing a version of OSSU that encrypts the credentials eventually; however, the fact that credentials are stored in any form (even encrypted) is technically a security issue.  While encrypted credentials will help, we will continue to recommend that OSSU not be installed on a public computer if it has FTP uploading enabled.
 
 ## Contributing:
 
