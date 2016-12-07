@@ -10,6 +10,11 @@ It offers the following features - all except the conversion features are option
 * Included ASP.NET display site that will parse through a playlist.txt file and write HTML5 markup that is easy to integrate with CSS via classes.  OSSU can download this playlist.txt file and update it with the new audio files automatically.
 * Deletion of source files after upload and/or move to the archival folder.
 
+### Pre-compiled/automated installation:
+
+You can download a pre-compiled copy of the OSSU installer from [https://downloads.semrauconsulting.com/ossu/UploadToolInstaller.exe](https://downloads.semrauconsulting.com/ossu/UploadToolInstaller.exe).
+This should be everything you need to start with the automated upload tool if you do not wish to do anything with the source code.
+
 ### Naming convention:
 
 OSSU is configured to use the following naming convention:
