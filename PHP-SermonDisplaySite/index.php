@@ -2,8 +2,8 @@
     //Put the url where this site will be located in the variable below.  Be sure to include a "/" at the end.
     $url = '';
 
-    //Nothing below should need to be updated.
-    $playlist = file_get_contents($url . 'playlist.txt');
+    //Nothing below should need to be updated (except the title in the html below the PHP script).
+    $playlist = url_get_contents($url . 'playlist.txt');
 
     $html = "";
 
@@ -46,11 +46,24 @@
         $line = strtok( $eol );
     }
 
+    function url_get_contents ($target_Url) {
+        if (!function_exists('curl_init')){ 
+            die('CURL is not installed!');
+        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $target_Url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        return $output;
+    }
+
 ?>
 
 
 <!DOCTYPE html>
     <head>
+       <!--This title can be edited if desired.-->
        <title>Sermons - Your Church Name Here</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
