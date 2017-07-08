@@ -117,6 +117,15 @@ Public Class Form1
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
 
         lockform()
+        If Not TextBox1.Text.EndsWith("\") Then
+            TextBox1.Text = TextBox1.Text + "\"
+        End If
+        If Not TextBox2.Text.EndsWith("\") Then
+            TextBox2.Text = TextBox1.Text + "\"
+        End If
+        If Not TextBox7.Text.EndsWith("\") Then
+            TextBox7.Text = TextBox1.Text + "\"
+        End If
         Dim trd As System.Threading.Thread = New System.Threading.Thread(AddressOf doinstall)
         trd.IsBackground = True
         trd.Start()
