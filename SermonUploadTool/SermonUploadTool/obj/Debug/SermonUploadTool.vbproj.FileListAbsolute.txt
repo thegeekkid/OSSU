@@ -20,3 +20,14 @@ C:\misc\Repos\Open Source Sermon Uploader\SermonUploadTool\SermonUploadTool\obj\
 C:\misc\Repos\Open Source Sermon Uploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.Resources.resources
 C:\misc\Repos\Open Source Sermon Uploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.selection.resources
 C:\misc\Repos\Open Source Sermon Uploader\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.vbproj.GenerateResource.Cache
+C:\Users\Brian\Repos\OSSU\SermonUploadTool\SermonUploadTool\bin\Debug\SermonUploadTool.exe
+C:\Users\Brian\Repos\OSSU\SermonUploadTool\SermonUploadTool\bin\Debug\SermonUploadTool.pdb
+C:\Users\Brian\Repos\OSSU\SermonUploadTool\SermonUploadTool\bin\Debug\SermonUploadTool.xml
+C:\Users\Brian\Repos\OSSU\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.vbprojResolveAssemblyReference.cache
+C:\Users\Brian\Repos\OSSU\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.Form1.resources
+C:\Users\Brian\Repos\OSSU\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.Resources.resources
+C:\Users\Brian\Repos\OSSU\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.selection.resources
+C:\Users\Brian\Repos\OSSU\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.vbproj.GenerateResource.Cache
+C:\Users\Brian\Repos\OSSU\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.exe
+C:\Users\Brian\Repos\OSSU\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.xml
+C:\Users\Brian\Repos\OSSU\SermonUploadTool\SermonUploadTool\obj\Debug\SermonUploadTool.pdb

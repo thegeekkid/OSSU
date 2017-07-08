@@ -31,7 +31,7 @@ Public Class Form1
         updateplaylist = readsetting("update_playlist")
         upload_file = readsetting("upload_file")
         filelocation = readsetting("staging_location")
-        avlibloc = readsetting("avlib_path")
+        avlibloc = readsetting("libav_path")
         delete_converted = readsetting("delete_converted_files")
         If movefile = True Then
             destination = readsetting("move_location")
